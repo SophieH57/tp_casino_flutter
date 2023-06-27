@@ -1,6 +1,6 @@
 # casino
 
-A new Flutter project.
+Tp Casino Flutter - HERB Sophie - MNS - M2I
 
 ## Getting Started
 
