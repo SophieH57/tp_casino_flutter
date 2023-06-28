@@ -40,15 +40,18 @@ class _MyHomePageState extends State<MyHomePage> {
     'images/sept.png'
   ];
 
-  int _item1 = Random().nextInt(6);
-  int _item2 = Random().nextInt(6);
-  int _item3 = Random().nextInt(6);
+  // int _item1 = 6;
+  // int _item2 = 6;
+  // int _item3 = 6;
+  int _item1 = Random().nextInt(7);
+  int _item2 = Random().nextInt(7);
+  int _item3 = Random().nextInt(7);
 
   void _play() {
     setState(() {
-      _item1 = Random().nextInt(6);
-      _item2 = Random().nextInt(6);
-      _item3 = Random().nextInt(6);
+      _item1 = Random().nextInt(7);
+      _item2 = Random().nextInt(7);
+      _item3 = Random().nextInt(7);
     });
   }
 
@@ -58,6 +61,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ? true
             : false;
     return winner;
+  }
+
+  bool _isSuperWinner() {
+    if (_item1.compareTo(6) == 0 &&
+        _item2.compareTo(6) == 0 &&
+        _item3.compareTo(6) == 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
@@ -96,7 +109,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
           Text(
-            _isWinner() ? 'Jackpot ! You win !' : 'You loose... Try again !',
+            _isWinner()
+                ? _isSuperWinner()
+                    ? 'Super Jackpot !!'
+                    : 'Jackpot ! You win !'
+                : 'You loose... Try again !',
             style: TextStyle(
                 fontWeight: _isWinner() ? FontWeight.bold : FontWeight.normal,
                 color: _isWinner() ? Colors.black : Colors.red,
