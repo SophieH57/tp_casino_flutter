@@ -40,6 +40,9 @@ class _MyHomePageState extends State<MyHomePage> {
     'images/sept.png'
   ];
 
+  // int _item1 = 1;
+  // int _item2 = 1;
+  // int _item3 = 1;
   int _item1 = Random().nextInt(6);
   int _item2 = Random().nextInt(6);
   int _item3 = Random().nextInt(6);
@@ -64,10 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlue[200],
+        backgroundColor: Colors.blue,
         title: const Text('Casino'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -90,13 +94,18 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
-          Text(_isWinner() ? 'Jackpot' : 'You loose... Try again !'),
-          // style: TextStyle(fontSize: _isWinner() ? ),),
+          Text(
+            _isWinner() ? 'Jackpot ! You win !' : 'You loose... Try again !',
+            style: TextStyle(
+              fontWeight: _isWinner() ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _play(),
         tooltip: 'Play',
+        hoverColor: Colors.purple,
         child: const Icon(Icons.attach_money),
       ),
     );
