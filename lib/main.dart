@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
       home: const MyHomePage(),
@@ -40,9 +40,6 @@ class _MyHomePageState extends State<MyHomePage> {
     'images/sept.png'
   ];
 
-  // int _item1 = 1;
-  // int _item2 = 1;
-  // int _item3 = 1;
   int _item1 = Random().nextInt(6);
   int _item2 = Random().nextInt(6);
   int _item3 = Random().nextInt(6);
@@ -67,8 +64,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: const Text('Casino'),
+        backgroundColor: Colors.black,
+        title: const Text(
+          'Casino',
+          style: TextStyle(color: Colors.redAccent),
+        ),
+        centerTitle: true,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,15 +98,24 @@ class _MyHomePageState extends State<MyHomePage> {
           Text(
             _isWinner() ? 'Jackpot ! You win !' : 'You loose... Try again !',
             style: TextStyle(
-              fontWeight: _isWinner() ? FontWeight.bold : FontWeight.normal,
-            ),
+                fontWeight: _isWinner() ? FontWeight.bold : FontWeight.normal,
+                color: _isWinner() ? Colors.black : Colors.red,
+                fontSize: _isWinner() ? 36 : 24),
           ),
+          _isWinner()
+              ? const Icon(
+                  Icons.attach_money,
+                  size: 60,
+                  color: Colors.amber,
+                )
+              : Container()
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _play(),
         tooltip: 'Play',
-        hoverColor: Colors.purple,
+        hoverColor: Colors.redAccent,
+        hoverElevation: 12,
         child: const Icon(Icons.attach_money),
       ),
     );
